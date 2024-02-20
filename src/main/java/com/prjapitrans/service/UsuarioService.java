@@ -1,4 +1,4 @@
-package com.prjapitrans.domain.usuario;
+package com.prjapitrans.service;
 
 import java.math.BigInteger;
 import java.nio.charset.StandardCharsets;
@@ -9,17 +9,20 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.prjapitrans.domain.Usuario;
+import com.prjapitrans.repository.UsuarioRepository;
+
 @Service
 public class UsuarioService {
 
   @Autowired
   private UsuarioRepository usuarioRepository;
 
-  public List<tbctrusuario> getAlltbCtrUsuario() {
+  public List<Usuario> getAlltbCtrUsuario() {
     return usuarioRepository.findAll();
   }
 
-  public tbctrusuario getByLoginAndSenha(String login, String senha) {
+  public Usuario getByLoginAndSenha(String login, String senha) {
     try {
       MessageDigest md = MessageDigest.getInstance("MD5");
       byte[] hashInBytes = md.digest(senha.getBytes(StandardCharsets.UTF_8));
@@ -36,7 +39,7 @@ public class UsuarioService {
     }
   }
 
-  public tbctrusuario getByLoginAndSenhaMD5(String login, String senha) {
+  public Usuario getByLoginAndSenhaMD5(String login, String senha) {
     return usuarioRepository.getByLoginAndSenha(login, senha);
   }
 

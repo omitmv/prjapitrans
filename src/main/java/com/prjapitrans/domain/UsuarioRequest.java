@@ -1,4 +1,4 @@
-package com.prjapitrans.domain.usuario;
+package com.prjapitrans.domain;
 
 import lombok.Getter;
 import lombok.Setter;

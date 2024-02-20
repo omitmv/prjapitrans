@@ -1,4 +1,4 @@
-package com.prjapitrans.domain.usuario;
+package com.prjapitrans.domain;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -9,8 +9,8 @@ import javax.persistence.Id;
 import lombok.Getter;
 import lombok.Setter;
 
-@Entity
-public class tbctrusuario {
+@Entity(name = "tbctrusuario")
+public class Usuario {
 
   @Id
   @GeneratedValue(strategy = GenerationType.AUTO)

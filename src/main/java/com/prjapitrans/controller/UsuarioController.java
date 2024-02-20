@@ -1,4 +1,4 @@
-package com.prjapitrans.domain.usuario;
+package com.prjapitrans.controller;
 
 import java.util.List;
 
@@ -11,6 +11,10 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+
+import com.prjapitrans.domain.Usuario;
+import com.prjapitrans.domain.UsuarioRequest;
+import com.prjapitrans.service.UsuarioService;
 
 @RestController
 @RequestMapping("/user")
@@ -25,12 +29,12 @@ public class UsuarioController {
   private UsuarioService usuarioService;
 
   @GetMapping
-  public List<tbctrusuario> getAll() {
+  public List<Usuario> getAll() {
     return usuarioService.getAlltbCtrUsuario();
   }
 
   @GetMapping("/login")
-  public ResponseEntity<tbctrusuario> login(@RequestBody UsuarioRequest request) {
+  public ResponseEntity<Usuario> login(@RequestBody UsuarioRequest request) {
     return ResponseEntity.ok(usuarioService.getByLoginAndSenhaMD5(request.getLogin(), request.getSenha()));
   }
 

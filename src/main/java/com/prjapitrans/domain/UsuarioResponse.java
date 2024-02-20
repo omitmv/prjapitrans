@@ -1,4 +1,4 @@
-package com.prjapitrans.domain.usuario;
+package com.prjapitrans.domain;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -7,14 +7,14 @@ public class UsuarioResponse {
 
   @Getter
   @Setter
-  private Long CdUsuario;
+  private Long cdUsuario;
 
   @Getter
   @Setter
-  private String Login;
+  private String login;
 
   @Getter
   @Setter
-  private String Senha;
+  private String senha;
 
 }
