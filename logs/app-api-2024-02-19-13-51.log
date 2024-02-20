@@ -1,0 +1,12 @@
+13:51:55.763 [main] INFO  c.prjapitrans.PrjapitransApplication - Starting PrjapitransApplication using Java 1.8.0_401 on RafaelValverdeP with PID 17236 (C:\Projetos\Java\prjapitrans\target\classes started by RafaelValverde in C:\Projetos\Java\prjapitrans)
+13:51:55.769 [main] INFO  c.prjapitrans.PrjapitransApplication - No active profile set, falling back to default profiles: default
+13:51:56.517 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+13:51:56.576 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 49 ms. Found 1 JPA repository interfaces.
+13:51:57.361 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8080 (http)
+13:51:57.369 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+13:51:57.370 [main] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+13:51:57.370 [main] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.52]
+13:51:57.446 [main] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+13:51:57.447 [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 1640 ms
+13:51:57.669 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+13:51:58.462 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.

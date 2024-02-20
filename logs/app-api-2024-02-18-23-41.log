@@ -1,0 +1,23 @@
+23:41:15.474 [SpringApplicationShutdownHook] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+23:41:15.478 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPoolBooks - Shutdown initiated...
+23:41:15.559 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPoolBooks - Shutdown completed.
+23:41:28.958 [main] INFO  c.prjapitrans.PrjapitransApplication - Starting PrjapitransApplication using Java 1.8.0_401 on RafaelValverdeP with PID 21356 (C:\Projetos\Java\prjapitrans\target\classes started by RafaelValverde in C:\Projetos\Java\prjapitrans)
+23:41:28.963 [main] INFO  c.prjapitrans.PrjapitransApplication - No active profile set, falling back to default profiles: default
+23:41:30.122 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+23:41:30.144 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 8 ms. Found 0 JPA repository interfaces.
+23:41:31.994 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8080 (http)
+23:41:32.009 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+23:41:32.010 [main] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+23:41:32.011 [main] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.52]
+23:41:32.098 [main] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+23:41:32.101 [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 3051 ms
+23:41:32.781 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPoolBooks - Starting...
+23:41:34.355 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPoolBooks - Start completed.
+23:41:35.866 [main] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+23:41:36.004 [main] WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+23:41:36.700 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
+23:41:36.718 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port(s): 8080 (http) with context path ''
+23:41:36.734 [main] INFO  c.prjapitrans.PrjapitransApplication - Started PrjapitransApplication in 8.215 seconds (JVM running for 8.853)
+23:41:42.168 [http-nio-8080-exec-2] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+23:41:42.168 [http-nio-8080-exec-2] INFO  o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+23:41:42.170 [http-nio-8080-exec-2] INFO  o.s.web.servlet.DispatcherServlet - Completed initialization in 2 ms
