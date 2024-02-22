@@ -1,13 +1,9 @@
-package com.prjapitrans.domain;
+package com.prjapitrans.dto;
 
 import lombok.Getter;
 import lombok.Setter;
 
-public class UsuarioResponse {
-
-  @Getter
-  @Setter
-  private Long cdUsuario;
+public class LoginRequest {
 
   @Getter
   @Setter

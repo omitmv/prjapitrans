@@ -1,19 +1,21 @@
 package com.prjapitrans.service;
 
-import java.math.BigInteger;
-import java.nio.charset.StandardCharsets;
-import java.security.MessageDigest;
-import java.security.NoSuchAlgorithmException;
 import java.util.List;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.prjapitrans.domain.Usuario;
 import com.prjapitrans.repository.UsuarioRepository;
 
 @Service
 public class UsuarioService {
+
+  private static final Logger LOGGER = LogManager.getLogger(UsuarioService.class);
 
   @Autowired
   private UsuarioRepository usuarioRepository;
@@ -22,25 +24,25 @@ public class UsuarioService {
     return usuarioRepository.findAll();
   }
 
-  public Usuario getByLoginAndSenha(String login, String senha) {
-    try {
-      MessageDigest md = MessageDigest.getInstance("MD5");
-      byte[] hashInBytes = md.digest(senha.getBytes(StandardCharsets.UTF_8));
-
-      String hash = new BigInteger(1, hashInBytes).toString(16);
-
-      while (hash.length() < 32) {
-        hash = "0" + hash;
-      }
-      return usuarioRepository.getByLoginAndSenha(login, hash);
-    } catch (NoSuchAlgorithmException e) {
-      e.printStackTrace();
-      return null;
-    }
+  public Usuario getByLoginAndSenhaMD5(String login, String senha) throws JsonProcessingException {
+    LOGGER.info("####### DEBUG 1: " + login + " - " + senha);
+    Usuario usuario = usuarioRepository.getByLoginAndSenha(login, senha);
+    ObjectMapper mapper = new ObjectMapper();
+    LOGGER.info("####### DEBUG 2: " + mapper.writeValueAsString(usuario));
+    return usuario;
   }
 
-  public Usuario getByLoginAndSenhaMD5(String login, String senha) {
-    return usuarioRepository.getByLoginAndSenha(login, senha);
+  public Usuario getByLogin(String login) throws JsonProcessingException {
+    LOGGER.info("####### DEBUG 3: " + login);
+    ObjectMapper mapper = new ObjectMapper();
+    if (login.equals(null)) {
+      return null;
+    } else {
+      Usuario user = mapper.readValue(login, Usuario.class);
+      Usuario usuario = usuarioRepository.findByLogin(user.getLogin());
+      LOGGER.info("####### DEBUG 4: " + mapper.writeValueAsString(usuario));
+      return usuario;
+    }
   }
 
 }

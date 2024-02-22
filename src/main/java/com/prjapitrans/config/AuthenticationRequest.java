@@ -1,16 +1,15 @@
-package com.prjapitrans.domain;
+package com.prjapitrans.config;
 
 import lombok.Getter;
 import lombok.Setter;
 
-public class UsuarioRequest {
-
+public class AuthenticationRequest {
   @Getter
   @Setter
   private String login;
-
   @Getter
   @Setter
   private String senha;
 
+  // getters and setters
 }

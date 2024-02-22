@@ -4,26 +4,21 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-/* import org.apache.logging.log4j.LogManager;
-* import org.apache.logging.log4j.Logger;
-*/
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
 import com.prjapitrans.domain.Usuario;
-import com.prjapitrans.domain.UsuarioRequest;
+import com.prjapitrans.dto.UsuarioRequest;
 import com.prjapitrans.service.UsuarioService;
 
 @RestController
 @RequestMapping("/user")
 public class UsuarioController {
-
-  /*
-   * private static final Logger LOGGER =
-   * LogManager.getLogger(UsuarioController.class);
-   */
 
   @Autowired
   private UsuarioService usuarioService;
@@ -34,8 +29,15 @@ public class UsuarioController {
   }
 
   @GetMapping("/login")
-  public ResponseEntity<Usuario> login(@RequestBody UsuarioRequest request) {
+  public ResponseEntity<Usuario> login(@RequestBody UsuarioRequest request) throws JsonProcessingException {
     return ResponseEntity.ok(usuarioService.getByLoginAndSenhaMD5(request.getLogin(), request.getSenha()));
+  }
+
+  @GetMapping("/login2")
+  public ResponseEntity<String> login2(@RequestBody UsuarioRequest request) throws JsonProcessingException {
+    Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+    String login = authentication.getName();
+    return ResponseEntity.ok(login);
   }
 
 }
