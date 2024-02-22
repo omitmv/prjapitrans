@@ -35,14 +35,28 @@ public class UsuarioService {
   public Usuario getByLogin(String login) throws JsonProcessingException {
     LOGGER.info("####### DEBUG 3: " + login);
     ObjectMapper mapper = new ObjectMapper();
+    Usuario usuario = new Usuario();
     if (login.equals(null)) {
       return null;
     } else {
-      Usuario user = mapper.readValue(login, Usuario.class);
-      Usuario usuario = usuarioRepository.findByLogin(user.getLogin());
+      if (isValidObject(login)) {
+        Usuario user = mapper.readValue(login, Usuario.class);
+        usuario = usuarioRepository.findByLogin(user.getLogin());
+      } else {
+        usuario = usuarioRepository.findByLogin(login);
+      }
       LOGGER.info("####### DEBUG 4: " + mapper.writeValueAsString(usuario));
       return usuario;
     }
   }
 
+  public boolean isValidObject(String variable) {
+    try {
+      ObjectMapper objectMapper = new ObjectMapper();
+      Object obj = objectMapper.readValue(variable, Object.class);
+      return true;
+    } catch (Exception e) {
+      return false;
+    }
+  }
 }
