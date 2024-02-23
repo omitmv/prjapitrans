@@ -1,5 +1,7 @@
 package com.prjapitrans.controller;
 
+import java.util.Base64;
+
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,6 +19,8 @@ import com.prjapitrans.config.JwtUtil;
 import com.prjapitrans.config.UserDetailsServiceImpl;
 import com.prjapitrans.domain.Usuario;
 import com.prjapitrans.dto.LoginRequest;
+import com.prjapitrans.dto.LoginResponse;
+import com.prjapitrans.dto.ResultResponse;
 import com.prjapitrans.service.UsuarioService;
 
 @RestController
@@ -36,21 +40,27 @@ public class AuthController {
     this.userDetailsService = userDetailsService;
   }
 
-  @SuppressWarnings("rawtypes")
   @PostMapping("/auth")
-  public ResponseEntity createAuthenticationToken(@RequestBody LoginRequest authenticationRequest) {
+  public ResponseEntity<ResultResponse> createAuthenticationToken(@RequestBody LoginRequest loginRequest) {
     try {
+      ObjectMapper json = new ObjectMapper();
+      byte[] decodeBytes = Base64.getDecoder().decode(loginRequest.getValue());
+      String decodeString = new String(decodeBytes);
+      Usuario authenticationRequest = json.readValue(decodeString, Usuario.class);
       final UserDetails userDetails = userDetailsService.loadUserByUsername(authenticationRequest.getLogin());
       String jwt = "";
       LOGGER.info("####### DEBUG 1: " + userDetails.getUsername() + " - " + userDetails.getPassword());
       Usuario usuario = usuarioService.getByLoginAndSenhaMD5(authenticationRequest.getLogin(),
           authenticationRequest.getSenha());
       if (!usuario.equals(null)) {
-        ObjectMapper json = new ObjectMapper();
         LOGGER.info("####### DEBUG 2: " + json.writeValueAsString(usuario));
         jwt = jwtUtil.generateToken(json.writeValueAsString(usuario));
         LOGGER.info("####### DEBUG 3: " + jwt);
-        return ResponseEntity.ok(jwt);
+        LoginResponse response = new LoginResponse();
+        ResultResponse resultResponse = new ResultResponse(response);
+        response.setAuth(true);
+        response.setToken(jwt);
+        return ResponseEntity.ok(resultResponse);
       } else {
         return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
       }

@@ -3,10 +3,13 @@ package com.prjapitrans.dto;
 import lombok.Getter;
 import lombok.Setter;
 
-public class LoginRequest {
+public class LoginResponse {
+  @Getter
+  @Setter
+  private Boolean auth;
 
   @Getter
   @Setter
-  private String value;
+  private String token;
 
 }

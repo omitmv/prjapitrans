@@ -3,7 +3,9 @@ package com.prjapitrans.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -17,9 +19,9 @@ public class ChamadoController {
   @Autowired
   private ChamadoService chamadoService;
 
-  @GetMapping
-  public List<Chamado> getAll() {
-    return chamadoService.getAllChamados();
+  @PostMapping("/list")
+  public ResponseEntity<List<Chamado>> getAll(@RequestBody Long nCdUsuario) {
+    return ResponseEntity.ok(chamadoService.listByCdUsuarioAbertura(nCdUsuario));
   }
 
 }

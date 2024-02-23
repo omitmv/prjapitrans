@@ -24,8 +24,8 @@ public class UsuarioController {
   private UsuarioService usuarioService;
 
   @GetMapping
-  public List<Usuario> getAll() {
-    return usuarioService.getAlltbCtrUsuario();
+  public ResponseEntity<List<Usuario>> getAll() {
+    return ResponseEntity.ok(usuarioService.getAlltbCtrUsuario());
   }
 
   @GetMapping("/login")

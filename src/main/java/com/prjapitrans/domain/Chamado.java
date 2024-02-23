@@ -1,5 +1,6 @@
 package com.prjapitrans.domain;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -19,46 +20,57 @@ public class Chamado {
 
   @Getter
   @Setter
+  @Column
   private Long cdSubGrupo;
 
   @Getter
   @Setter
+  @Column
   private String obs;
 
   @Getter
   @Setter
+  @Column
   private String dtAbertura;
 
   @Getter
   @Setter
+  @Column
   private String dtFechamento;
 
   @Getter
   @Setter
+  @Column
   private String cdUsuarioAbertura;
 
   @Getter
   @Setter
+  @Column
   private Long cdUsuarioAtendimento;
 
   @Getter
   @Setter
+  @Column
   private String dtAtendimento;
 
   @Getter
   @Setter
+  @Column
   private long avaliacao;
 
   @Getter
   @Setter
+  @Column
   private String dtUltAtualizacao;
 
   @Getter
   @Setter
+  @Column
   private String dtFechamentoTemporario;
 
   @Getter
   @Setter
-  private String fl_ativo;
+  @Column
+  private String flAtivo;
 
 }
