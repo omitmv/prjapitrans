@@ -16,12 +16,12 @@ public class Chamado {
   @GeneratedValue(strategy = GenerationType.AUTO)
   @Getter
   @Setter
-  private Long cdChamado;
+  private int cdChamado;
 
   @Getter
   @Setter
   @Column
-  private Long cdSubGrupo;
+  private int cdSubGrupo;
 
   @Getter
   @Setter
@@ -41,12 +41,12 @@ public class Chamado {
   @Getter
   @Setter
   @Column
-  private String cdUsuarioAbertura;
+  private int cdUsuarioAbertura;
 
   @Getter
   @Setter
   @Column
-  private Long cdUsuarioAtendimento;
+  private int cdUsuarioAtendimento;
 
   @Getter
   @Setter

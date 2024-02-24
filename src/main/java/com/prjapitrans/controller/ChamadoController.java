@@ -20,7 +20,7 @@ public class ChamadoController {
   private ChamadoService chamadoService;
 
   @PostMapping("/list")
-  public ResponseEntity<List<Chamado>> getAll(@RequestBody Long nCdUsuario) {
+  public ResponseEntity<List<Chamado>> getAll(@RequestBody int nCdUsuario) {
     return ResponseEntity.ok(chamadoService.listByCdUsuarioAbertura(nCdUsuario));
   }
 

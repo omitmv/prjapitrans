@@ -14,8 +14,8 @@ public class ChamadoService {
   @Autowired
   private ChamadoRepository chamadoRepository;
 
-  public List<Chamado> listByCdUsuarioAbertura(Long nCdUsuario) {
-    return chamadoRepository.listByCdUsuarioAbertura(nCdUsuario);
+  public List<Chamado> listByCdUsuarioAbertura(int nCdUsuario) {
+    return chamadoRepository.findByCdUsuarioAbertura(nCdUsuario);
   }
 
 }
