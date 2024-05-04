@@ -56,7 +56,7 @@ public class Chamado {
   @Getter
   @Setter
   @Column
-  private long avaliacao;
+  private int avaliacao;
 
   @Getter
   @Setter

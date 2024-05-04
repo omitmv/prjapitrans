@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.prjapitrans.domain.Chamado;
+import com.prjapitrans.dto.ListChamadoRequest;
 import com.prjapitrans.service.ChamadoService;
 
 @RestController
@@ -20,8 +21,8 @@ public class ChamadoController {
   private ChamadoService chamadoService;
 
   @PostMapping("/list")
-  public ResponseEntity<List<Chamado>> getAll(@RequestBody int nCdUsuario) {
-    return ResponseEntity.ok(chamadoService.listByCdUsuarioAbertura(nCdUsuario));
+  public ResponseEntity<List<Chamado>> getAll(@RequestBody ListChamadoRequest requestDTO) {
+    return ResponseEntity.ok(chamadoService.listByCdUsuarioAbertura(requestDTO.getNCdUsuario()));
   }
 
 }

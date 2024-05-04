@@ -35,7 +35,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
   private String[] ULR_PUBLIC = {
       "/auth",
-      "/actuator/*"
+      "/actuator/*",
+      "/send-email"
   };
 
   public SecurityConfig(JwtAuthenticationEntryPoint jwtAuthenticationEntryPoint, UserDetailsService userDetailsService,

@@ -8,6 +8,6 @@ import com.prjapitrans.domain.Chamado;
 
 public interface ChamadoRepository extends JpaRepository<Chamado, Long> {
 
-  List<Chamado> findByCdUsuarioAbertura(int cdUsuarioAbertura);
+  List<Chamado> getByCdUsuarioAberturaAndFlAtivo(Long cdUsuarioAbertura, String flAtivo);
 
 }
