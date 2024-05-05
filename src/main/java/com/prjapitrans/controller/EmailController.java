@@ -32,14 +32,17 @@ public class EmailController {
     try {
       MimeMessage mail = mailSender.createMimeMessage();
       MimeMessageHelper helper = new MimeMessageHelper(mail);
-      LOGGER.info("####### DEBUG 1: " + sendEmailRequest.getTo());
-      helper.setTo(sendEmailRequest.getTo());
-      LOGGER.info("####### DEBUG 2: " + sendEmailRequest.getSubject());
-      helper.setSubject(sendEmailRequest.getSubject());
-      LOGGER.info("####### DEBUG 3: " + sendEmailRequest.getBodyEmail());
-      helper.setText(sendEmailRequest.getBodyEmail(), true);
-      helper.setFrom(emailFrom);
-      mailSender.send(mail);
+
+      for (int i = 0; i > sendEmailRequest.getEmails().size(); i++) {
+        LOGGER.info("####### DEBUG 1: " + sendEmailRequest.getEmails().get(i).getEmail());
+        helper.setTo(sendEmailRequest.getEmails().get(i).getEmail());
+        LOGGER.info("####### DEBUG 2: " + sendEmailRequest.getSubject());
+        helper.setSubject(sendEmailRequest.getSubject());
+        LOGGER.info("####### DEBUG 3: " + sendEmailRequest.getMessage());
+        helper.setText(sendEmailRequest.getMessage(), true);
+        helper.setFrom(emailFrom);
+        mailSender.send(mail);
+      }
       return ResponseEntity.ok("Email enviado com sucesso!");
     } catch (Exception e) {
       e.printStackTrace();
