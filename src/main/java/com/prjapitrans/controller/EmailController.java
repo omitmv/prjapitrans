@@ -29,7 +29,6 @@ public class EmailController {
   @Autowired
   private JavaMailSender mailSender;
 
-  @CrossOrigin(origins = "*")
   @RequestMapping(path = "/utils/sendEmail", method = RequestMethod.POST)
   public ResponseEntity<String> sendMail(@RequestBody SendEmailRequest sendEmailRequest) {
     try {
